@@ -1,0 +1,12 @@
+{
+  "name": "mj-clarify",
+  "version": "1.0.0",
+  "description": "Requirements clarification before planning — 4-agent Socratic elicitation team. Surfaces hidden assumptions, validates scope, prevents over-engineering before MJ-plan runs.",
+  "author": {
+    "name": "gwanli",
+    "url": "https://github.com/nh-investment-squad1"
+  },
+  "repository": "https://github.com/nh-investment-squad1/MJnCompany_2-0",
+  "license": "MIT",
+  "keywords": ["clarify", "requirements", "scope", "assumptions", "karpathy", "pre-plan"]
+}

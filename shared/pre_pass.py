@@ -30,7 +30,7 @@ BASE = MARKETPLACE / "plugins"
 def latest_plugin(prefix: str) -> str:
     dirs = sorted(BASE.glob(f"{prefix}v*"), key=lambda p: p.name)
     if not dirs:
-        # prefix without trailing dash (e.g. "cs-smart-run")
+        # prefix without trailing dash (e.g. "mj-smart-run")
         exact = BASE / prefix
         return str(exact) if exact.is_dir() else ""
     return str(dirs[-1])
@@ -92,10 +92,10 @@ def cmd_ceo_preflight() -> dict:
         "test":         latest_plugin("MJ-test-"),
         "plan":         latest_plugin("MJ-plan-"),
         "review":       latest_plugin("MJ-codebase-review-"),
-        "design":       latest_plugin("cs-design-"),
-        "smartrun":     latest_plugin("cs-smart-run"),
-        "clarify":      latest_plugin("cs-clarify-"),
-        "experiencing": latest_plugin("cs-experiencing-"),
+        "design":       latest_plugin("mj-design-"),
+        "smartrun":     latest_plugin("mj-smart-run"),
+        "clarify":      latest_plugin("mj-clarify-"),
+        "experiencing": latest_plugin("mj-experiencing-"),
     }
 
     # superpowers
@@ -168,7 +168,7 @@ def cmd_ceo_preflight() -> dict:
                 "autopilot":    omc("autopilot"),
             },
             "gstack":  gstack,
-            "clarify": f"{clarify_dir}/skills/cs-clarify/SKILL.md" if clarify_dir else "",
+            "clarify": f"{clarify_dir}/skills/mj-clarify/SKILL.md" if clarify_dir else "",
             "context7": c7,
         },
         "context7_installed": bool(c7 and Path(c7).exists()),
@@ -245,12 +245,12 @@ def cmd_plugin_versions() -> dict:
         ("MJ-test",             "MJ-test-"),
         ("MJ-plan",             "MJ-plan-"),
         ("MJ-codebase-review",  "MJ-codebase-review-"),
-        ("cs-design",           "cs-design-"),
-        ("cs-smart-run",        "cs-smart-run"),
-        ("cs-clarify",          "cs-clarify-"),
-        ("cs-experiencing",     "cs-experiencing-"),
-        ("cs-end",              "cs-end-"),
-        ("cs-ceo",              "cs-ceo-"),
+        ("mj-design",           "mj-design-"),
+        ("mj-smart-run",        "mj-smart-run"),
+        ("mj-clarify",          "mj-clarify-"),
+        ("mj-experiencing",     "mj-experiencing-"),
+        ("mj-end",              "mj-end-"),
+        ("mj-ceo",              "mj-ceo-"),
     ]
     return {name: latest_plugin(prefix) for name, prefix in prefixes}
 

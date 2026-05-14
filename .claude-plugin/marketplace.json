@@ -7,19 +7,19 @@
   "description": "MJnCOMPANY — A virtual AI team for Claude Code. Each plugin is a teammate (CEO / PM / Architect / Designer / QA / Reviewer / DevOps) that takes you from idea to ship.",
   "plugins": [
     {
-      "name": "cs-end",
-      "description": "🏁 Session Closer — 4-Agent analysis + TIL save + plugin version-up + GitHub push (/cs-end)",
-      "source": "./plugins/cs-end-v2"
+      "name": "mj-end",
+      "description": "🏁 Session Closer — 4-Agent analysis + TIL save + plugin version-up + GitHub push (/mj-end)",
+      "source": "./plugins/mj-end-v2"
     },
     {
-      "name": "cs-ceo",
-      "description": "🧭 CEO — Estimates effort and autonomously dispatches across MJ-test/MJ-plan/MJ-codebase-review/cs-design/cs-smart-run. v5.2 adds External Knowledge Gate + partnership protocols.",
-      "source": "./plugins/cs-ceo-v11"
+      "name": "mj-ceo",
+      "description": "🧭 CEO — Estimates effort and autonomously dispatches across MJ-test/MJ-plan/MJ-codebase-review/mj-design/mj-smart-run. v5.2 adds External Knowledge Gate + partnership protocols.",
+      "source": "./plugins/mj-ceo-v11"
     },
     {
-      "name": "cs-clarify",
+      "name": "mj-clarify",
       "description": "💬 PM — Requirements clarification before planning. 4-agent Socratic elicitation surfaces hidden assumptions, validates scope, prevents over-engineering.",
-      "source": "./plugins/cs-clarify-v1"
+      "source": "./plugins/mj-clarify-v1"
     },
     {
       "name": "MJ-plan",
@@ -27,14 +27,14 @@
       "source": "./plugins/MJ-plan-v21"
     },
     {
-      "name": "cs-design",
+      "name": "mj-design",
       "description": "🎨 Designer — 5-agent parallel design review + claude.ai/design-quality generation (--gen). oklch() palette, ec-* namespace, self-contained HTML or Next.js TSX output.",
-      "source": "./plugins/cs-design-v20"
+      "source": "./plugins/mj-design-v20"
     },
     {
-      "name": "cs-design-sample1",
+      "name": "mj-design-sample1",
       "description": "🎨 Design Reference — Crextio-inspired warm cream palette + amber/slate accents. Audit & apply to Tailwind/Next.js dashboards.",
-      "source": "./plugins/cs-design-sample1"
+      "source": "./plugins/mj-design-sample1"
     },
     {
       "name": "MJ-test",
@@ -47,19 +47,19 @@
       "source": "./plugins/MJ-codebase-review-v29"
     },
     {
-      "name": "cs-ship",
+      "name": "mj-ship",
       "description": "🚢 DevOps — Pre-PR validation gate. 4-agent team checks spec compliance, coverage, commit-message quality before merge.",
-      "source": "./plugins/cs-ship-v1"
+      "source": "./plugins/mj-ship-v1"
     },
     {
-      "name": "cs-smart-run",
+      "name": "mj-smart-run",
       "description": "⚡ Team Lead — Two-phase orchestrator: plan with Opus → execute with Sonnet agents in parallel.",
-      "source": "./plugins/cs-smart-run"
+      "source": "./plugins/mj-smart-run"
     },
     {
-      "name": "cs-experiencing",
-      "description": "📚 Knowledge Keeper — Meta-router across MJ-test / MJ-plan / MJ-codebase-review / cs-design with versioned learnings. Includes /cs-end session-wrap.",
-      "source": "./plugins/cs-experiencing-v8"
+      "name": "mj-experiencing",
+      "description": "📚 Knowledge Keeper — Meta-router across MJ-test / MJ-plan / MJ-codebase-review / mj-design with versioned learnings. Includes /mj-end session-wrap.",
+      "source": "./plugins/mj-experiencing-v8"
     },
     {
       "name": "convo-maker",

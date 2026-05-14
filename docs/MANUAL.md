@@ -7,9 +7,9 @@
 ## 워크플로우 한눈에 보기
 
 ```
-[요청이 모호] → /cs-clarify → [요청이 명확] → /MJ-plan → [구현] → /cs-ship → PR
+[요청이 모호] → /mj-clarify → [요청이 명확] → /MJ-plan → [구현] → /mj-ship → PR
 [코드 리뷰]  → /MJ-codebase-review
-[디자인 리뷰] → /cs-design
+[디자인 리뷰] → /mj-design
 [웹 테스트]  → /MJ-test
 ```
 
@@ -23,7 +23,7 @@
 
 완료 후 구현 → PR 전:
 ```
-/cs-ship
+/mj-ship
 ```
 
 ---
@@ -31,7 +31,7 @@
 ## 상황 2 — 요청이 모호하거나 범위가 클 때
 
 ```
-/cs-clarify "사용자 관리 시스템 만들기"
+/mj-clarify "사용자 관리 시스템 만들기"
 ```
 
 결과로 `CLARIFY.md` 생성됨 → 그 다음:
@@ -44,7 +44,7 @@
 ## 상황 3 — 구현 완료, PR 만들기 전 최종 점검
 
 ```
-/cs-ship
+/mj-ship
 ```
 
 자동으로:
@@ -79,17 +79,17 @@
 ## 상황 5 — UI가 이상한 것 같을 때
 
 ```
-/cs-design
+/mj-design
 ```
 
 빠른 확인 (수정된 파일만):
 ```
-/cs-design --quick
+/mj-design --quick
 ```
 
 문제 자동 수정까지:
 ```
-/cs-design --fix
+/mj-design --fix
 ```
 
 ---
@@ -106,7 +106,7 @@
 
 나중에 잊어버리기 전에 바로 캡처:
 ```
-/cs-experiencing btw "로그인 실패 시 에러 메시지가 너무 모호함"
+/mj-experiencing btw "로그인 실패 시 에러 메시지가 너무 모호함"
 ```
 
 ---
@@ -114,7 +114,7 @@
 ## 상황 8 — 잠깐 자리 비워야 할 때 (진행 상황 저장)
 
 ```
-/cs-experiencing checkpoint
+/mj-experiencing checkpoint
 ```
 
 ---
@@ -122,7 +122,7 @@
 ## 상황 9 — 현재 버전 상태 확인
 
 ```
-/cs-experiencing status
+/mj-experiencing status
 ```
 
 ---
@@ -131,15 +131,15 @@
 
 도메인별:
 ```
-/cs-experiencing version-up test
-/cs-experiencing version-up plan
-/cs-experiencing version-up review
-/cs-experiencing version-up design
+/mj-experiencing version-up test
+/mj-experiencing version-up plan
+/mj-experiencing version-up review
+/mj-experiencing version-up design
 ```
 
 한 번에 전부:
 ```
-/cs-experiencing version-up all
+/mj-experiencing version-up all
 ```
 
 ---
@@ -155,7 +155,7 @@
 | `performance` | 성능 병목 |
 | `maintainability` | 유지보수성, 가독성 |
 
-### /cs-design --focus
+### /mj-design --focus
 | 옵션 | 내용 |
 |------|------|
 | `visual` | 시각적 계층, 타이포그래피 |
@@ -170,7 +170,7 @@
 
 ```bash
 # 1. 요청 명료화 (모호한 경우)
-/cs-clarify "기능 설명"
+/mj-clarify "기능 설명"
 
 # 2. 코딩 플랜 생성
 /MJ-plan "기능 설명"
@@ -178,10 +178,10 @@
 # 3. 구현 (Claude가 PLAN.md 따라 구현)
 
 # 4. PR 전 최종 검증
-/cs-ship
+/mj-ship
 
 # 5. PASS이면 커밋 + PR 생성
-# commit 메시지는 cs-ship이 자동 제안
+# commit 메시지는 mj-ship이 자동 제안
 ```
 
 ---
@@ -193,7 +193,7 @@
 
 ```
 내 브랜치 (feature/login)
-    ↓ /cs-ship 통과
+    ↓ /mj-ship 통과
     ↓ git commit -m "feat(auth): add JWT login"
     ↓ git push
     ↓ gh pr create

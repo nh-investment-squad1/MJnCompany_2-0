@@ -8,8 +8,8 @@ Key routing rules:
 - Web testing, playwright, site QA, find bugs on a URL → invoke MJ-test
 - TDD plan, clean architecture plan, coding plan for a feature → invoke MJ-plan
 - Codebase review, architecture review, code quality check → invoke MJ-codebase-review
-- Design review, UI audit, UX analysis, 디자인 리뷰, anti-pattern detection → invoke cs-design
-- Sync plugins, push to GitHub, update marketplace → invoke cs-sync
+- Design review, UI audit, UX analysis, 디자인 리뷰, anti-pattern detection → invoke mj-design
+- Sync plugins, push to GitHub, update marketplace → invoke mj-sync
 - Complex multi-step task, plan then execute in parallel → invoke smart-run
 - English conversation, convert session to dialog → invoke convo-maker
 - Product ideas, "is this worth building", brainstorming → invoke office-hours

@@ -2,7 +2,7 @@
 
 > 🇺🇸 English · [🇰🇷 한국어](./README.ko.md)
 
-**TL;DR — One marketplace, eleven AI teammates.** Install it once, and you can call a CEO, PM, Architect, Designer, QA Engineer, Code Reviewer, and DevOps engineer from inside Claude Code with simple slash commands like `/cs-ceo` or `/MJ-test`.
+**TL;DR — One marketplace, eleven AI teammates.** Install it once, and you can call a CEO, PM, Architect, Designer, QA Engineer, Code Reviewer, and DevOps engineer from inside Claude Code with simple slash commands like `/mj-ceo` or `/MJ-test`.
 
 > ⚡ **Optional: Install [uv](https://docs.astral.sh/uv/) for 70%+ token savings on code analysis** — `brew install uv` or `curl -LsSf https://astral.sh/uv/install.sh | sh`. Works without it too (automatic fallback).
 
@@ -15,7 +15,7 @@
 **MJnCompany_2-0** is a marketplace that bundles **11 plugins**, each one a specialist on a virtual AI team:
 
 ```
-You ──▶ /cs-ceo "build a dashboard"
+You ──▶ /mj-ceo "build a dashboard"
               │
               ▼
       🧭 CEO  decides which teammates to call
@@ -25,7 +25,7 @@ You ──▶ /cs-ceo "build a dashboard"
 🏗️ Plan   🎨 Design   🧪 Test    🚢 Ship
 ```
 
-You don't need to remember which command does what — type `/cs-ceo "your goal"` and it dispatches the right teammates. Or call them directly when you know what you need.
+You don't need to remember which command does what — type `/mj-ceo "your goal"` and it dispatches the right teammates. Or call them directly when you know what you need.
 
 ---
 
@@ -33,16 +33,16 @@ You don't need to remember which command does what — type `/cs-ceo "your goal"
 
 | Member | Plugin | Slash Command | What it does |
 |--------|--------|--------------|------|
-| 🧭 **CEO** | `cs-ceo` | `/cs-ceo "goal"` | Estimates effort, picks teammates, dispatches them. **Start here if unsure.** |
-| 💬 **PM** | `cs-clarify` | `/cs-clarify` | Asks Socratic questions, surfaces hidden assumptions, prevents over-engineering |
+| 🧭 **CEO** | `mj-ceo` | `/mj-ceo "goal"` | Estimates effort, picks teammates, dispatches them. **Start here if unsure.** |
+| 💬 **PM** | `mj-clarify` | `/mj-clarify` | Asks Socratic questions, surfaces hidden assumptions, prevents over-engineering |
 | 🏗️ **Architect** | `MJ-plan` | `/MJ-plan "feature"` | TDD + Clean Architecture plan: domain analysis, architecture, test strategy, checklist |
-| 🎨 **Designer** | `cs-design` | `/cs-design <url>` | 5-agent design review: hierarchy, interaction, design system, a11y, anti-patterns |
-| 🎨 **Design Reference** | `cs-design-sample1` | `/cs-design-sample1` | Crextio-style design guide for Tailwind/Next.js dashboards |
+| 🎨 **Designer** | `mj-design` | `/mj-design <url>` | 5-agent design review: hierarchy, interaction, design system, a11y, anti-patterns |
+| 🎨 **Design Reference** | `mj-design-sample1` | `/mj-design-sample1` | Crextio-style design guide for Tailwind/Next.js dashboards |
 | 🧪 **QA Engineer** | `MJ-test` | `/MJ-test <url>` | 14-agent web test: security, SEO, perf, a11y, DB, PWA, touch, image |
 | 🔍 **Code Reviewer** | `MJ-codebase-review` | `/MJ-codebase-review ./src` | 5-agent review: architecture, quality, security, perf, maintainability |
-| 🚢 **DevOps** | `cs-ship` | `/cs-ship` | Pre-PR validation: spec compliance, coverage, commit messages |
-| ⚡ **Team Lead** | `cs-smart-run` | `/cs-smart-run "task"` | Plan with Opus → execute with Sonnet agents in parallel |
-| 📚 **Knowledge Keeper** | `cs-experiencing` | `/cs-experiencing` | Versioned learnings + `/cs-end` session-wrap *(author-only push)* |
+| 🚢 **DevOps** | `mj-ship` | `/mj-ship` | Pre-PR validation: spec compliance, coverage, commit messages |
+| ⚡ **Team Lead** | `mj-smart-run` | `/mj-smart-run "task"` | Plan with Opus → execute with Sonnet agents in parallel |
+| 📚 **Knowledge Keeper** | `mj-experiencing` | `/mj-experiencing` | Versioned learnings + `/mj-end` session-wrap *(author-only push)* |
 | 🗣️ **Language Coach** | `convo-maker` | `/convo-maker` | Turns session Q&A into natural American English conversations |
 
 ---
@@ -76,16 +76,16 @@ Inside Claude Code, paste:
 Pick à la carte, or install everything:
 
 ```
-/plugin install cs-ceo@MJnCompany_2-0
-/plugin install cs-clarify@MJnCompany_2-0
+/plugin install mj-ceo@MJnCompany_2-0
+/plugin install mj-clarify@MJnCompany_2-0
 /plugin install MJ-plan@MJnCompany_2-0
-/plugin install cs-design@MJnCompany_2-0
-/plugin install cs-design-sample1@MJnCompany_2-0
+/plugin install mj-design@MJnCompany_2-0
+/plugin install mj-design-sample1@MJnCompany_2-0
 /plugin install MJ-test@MJnCompany_2-0
 /plugin install MJ-codebase-review@MJnCompany_2-0
-/plugin install cs-ship@MJnCompany_2-0
-/plugin install cs-smart-run@MJnCompany_2-0
-/plugin install cs-experiencing@MJnCompany_2-0
+/plugin install mj-ship@MJnCompany_2-0
+/plugin install mj-smart-run@MJnCompany_2-0
+/plugin install mj-experiencing@MJnCompany_2-0
 /plugin install convo-maker@MJnCompany_2-0
 ```
 
@@ -100,7 +100,7 @@ That's it. Type `/` in Claude Code and you'll see the new commands.
 Ask the CEO:
 
 ```
-/cs-ceo "I want to build a user dashboard with auth"
+/mj-ceo "I want to build a user dashboard with auth"
 ```
 
 The CEO estimates effort, decides which teammates to call (PM, Architect, Designer, etc.), and runs them in the right order. You just sit back and answer when they ask clarifying questions.
@@ -112,7 +112,7 @@ The CEO estimates effort, decides which teammates to call (PM, Architect, Design
 ### Build a new feature from scratch
 
 ```
-/cs-clarify "add Stripe payments"     # PM: surface assumptions
+/mj-clarify "add Stripe payments"     # PM: surface assumptions
    ↓
 /MJ-plan "Stripe checkout + webhook"  # Architect: TDD plan
    ↓
@@ -122,20 +122,20 @@ The CEO estimates effort, decides which teammates to call (PM, Architect, Design
    ↓
 /MJ-codebase-review ./src             # Reviewer: 5-agent code review
    ↓
-/cs-ship                              # DevOps: pre-PR gate
+/mj-ship                              # DevOps: pre-PR gate
 ```
 
 ### Audit an existing site
 
 ```
-/cs-design https://example.com    # Visual + UX review
+/mj-design https://example.com    # Visual + UX review
 /MJ-test https://example.com      # Security/SEO/perf/a11y
 ```
 
 ### Just let the CEO drive
 
 ```
-/cs-ceo "audit my landing page and tell me what to fix first"
+/mj-ceo "audit my landing page and tell me what to fix first"
 ```
 
 ---
@@ -177,10 +177,10 @@ plugins/shared/
 | MJ-test | 14 | Phase 1 sequential (build, page-explore) → Phase 2 parallel (12 specialists) |
 | MJ-plan | 4 | Parallel: domain, architecture, TDD, checklist |
 | MJ-codebase-review | 5 | Parallel: architecture, quality, security, perf, maintainability |
-| cs-design | 5 | Parallel: visual, interaction, design-system, responsive/a11y, anti-pattern |
-| cs-clarify | 4 | Sequential Socratic elicitation |
-| cs-ship | 4 | Parallel pre-PR validation |
-| cs-ceo | 1 lead → routes to others | Adaptive |
+| mj-design | 5 | Parallel: visual, interaction, design-system, responsive/a11y, anti-pattern |
+| mj-clarify | 4 | Sequential Socratic elicitation |
+| mj-ship | 4 | Parallel pre-PR validation |
+| mj-ceo | 1 lead → routes to others | Adaptive |
 
 ---
 
@@ -197,16 +197,16 @@ MJnCompany_2-0/
 │   │       ├── extract_summary.py #    file structure + import graph → JSON
 │   │       ├── ts_rust_diff.py    #    TypeScript ↔ Rust struct field diff
 │   │       └── abspath_check.py   #    hardcoded absolute path detection
-│   ├── cs-ceo-v11/                # 🧭 CEO orchestrator
-│   ├── cs-clarify-v1/             # 💬 PM
+│   ├── mj-ceo-v11/                # 🧭 CEO orchestrator
+│   ├── mj-clarify-v1/             # 💬 PM
 │   ├── MJ-plan-v21/               # 🏗️ Architect
-│   ├── cs-design-v19/             # 🎨 Designer
-│   ├── cs-design-sample1/         # 🎨 Design reference
+│   ├── mj-design-v19/             # 🎨 Designer
+│   ├── mj-design-sample1/         # 🎨 Design reference
 │   ├── MJ-test-v26/               # 🧪 QA
 │   ├── MJ-codebase-review-v29/    # 🔍 Reviewer (Python pre-pass enabled)
-│   ├── cs-ship-v1/                # 🚢 DevOps
-│   ├── cs-smart-run/              # ⚡ Team Lead
-│   ├── cs-experiencing-v8/        # 📚 Knowledge keeper
+│   ├── mj-ship-v1/                # 🚢 DevOps
+│   ├── mj-smart-run/              # ⚡ Team Lead
+│   ├── mj-experiencing-v8/        # 📚 Knowledge keeper
 │   └── convo-maker/               # 🗣️ Language coach
 ├── docs/                          # extra documentation
 ├── README.md                      # this file
@@ -220,7 +220,7 @@ Each plugin folder contains its own `.claude-plugin/plugin.json`, plus `agents/`
 ## ❓ FAQ
 
 **Q: Do I need to install all 11 plugins?**
-A: No. Install only what you need. `cs-ceo` alone covers most cases since it dispatches others on demand (you'll need them installed for the CEO to call them).
+A: No. Install only what you need. `mj-ceo` alone covers most cases since it dispatches others on demand (you'll need them installed for the CEO to call them).
 
 **Q: Does this cost extra?**
 A: The plugins themselves are free (MIT). They run on your existing Claude Code subscription / API usage.
@@ -234,8 +234,8 @@ A: Restart Claude Code (Ctrl-C → `claude` again). New plugins load on startup.
 **Q: How do I get the 70% token savings?**
 A: Install [uv](https://docs.astral.sh/uv/) — the Python environment manager. One command: `brew install uv` (Mac) or `curl -LsSf https://astral.sh/uv/install.sh | sh`. No Python pre-install needed. The plugins auto-detect uv and use it; without it they fall back silently to LLM-based analysis.
 
-**Q: Can I use `/cs-end`?**
-A: `/cs-end` is designed for the plugin author. If you run it, Phase 4 (git push to the marketplace repo) is automatically skipped — your local session learnings are still saved normally. Use `--project /path/to/your/repo` to include your project's push status in the report.
+**Q: Can I use `/mj-end`?**
+A: `/mj-end` is designed for the plugin author. If you run it, Phase 4 (git push to the marketplace repo) is automatically skipped — your local session learnings are still saved normally. Use `--project /path/to/your/repo` to include your project's push status in the report.
 
 **Q: Something is broken / I want to contribute.**
 A: Open an issue or PR at [github.com/nh-investment-squad1/MJnCompany_2-0](https://github.com/nh-investment-squad1/MJnCompany_2-0).

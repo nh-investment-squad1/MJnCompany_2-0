@@ -7,7 +7,7 @@
   - 원인: 훅 비정상 종료가 Claude Code 입력창을 회색으로 블로킹
   - 영향: CS볼트V5 등 `.env` 없는 작업 폴더에서 입력 불가 현상 해소
 
-## [cs-end-v1] 1.1.0 — 2026-05-01
+## [mj-end-v1] 1.1.0 — 2026-05-01
 
 ### Added
 - Phase 6: Context Compact suggestion — after Phase 5 push report, generates a

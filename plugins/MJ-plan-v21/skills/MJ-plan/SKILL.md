@@ -60,7 +60,7 @@ plan-lead 에이전트가 4개 전문 에이전트 팀을 조율합니다...
 
 ```bash
 if [ -n "$CMUX_SOCKET_PATH" ]; then
-  cmux set-status "cs-plan" "running" --icon "gear"
+  cmux set-status "mj-plan" "running" --icon "gear"
   cmux set-progress 0.1 --label "MJ-plan 시작: plan-lead 스폰 중..."
 fi
 ```
@@ -92,7 +92,7 @@ plan-lead 완료 후 완료 결과를 사용자에게 전달합니다.
 if [ -n "$CMUX_SOCKET_PATH" ]; then
   cmux set-progress 1.0 --label "PLAN.md 생성 완료"
   cmux notify --title "MJ-plan 완료" --body "PLAN.md 생성됨 — [FEATURE]"
-  cmux set-status "cs-plan" "done" --icon "checkmark"
+  cmux set-status "mj-plan" "done" --icon "checkmark"
 fi
 ```
 
