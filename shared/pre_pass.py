@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-CS-series Python pre-pass — file-system ops, git queries, path resolution.
+MJ-series Python pre-pass — file-system ops, git queries, path resolution.
 
 Claude tokens are reserved for reasoning.  This script handles everything
 that can be answered deterministically: plugin paths, partner skill paths,
@@ -12,10 +12,13 @@ Sub-commands
   git-status <dir>            → push status for one repo (run after git push)
   resolve-partner <name>      → dynamic SKILL.md path lookup
   plugin-versions             → latest dir for every CS plugin
+  session-digest [FLAGS...]   → session pre-pass: domain usage, BTW pending, knowhow index, stale entries
 """
 
+import datetime
 import json
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -180,6 +183,8 @@ def cmd_end_preflight(argv: list) -> dict:
     no_push = False
     no_compact = False
     learning_only = False
+    no_decay_check = False
+    explicit_domains = ""
 
     i = 0
     while i < len(argv):
@@ -195,6 +200,13 @@ def cmd_end_preflight(argv: list) -> dict:
             no_compact = True
         elif a == "--learning-only":
             learning_only = True
+        elif a == "--no-decay-check":
+            no_decay_check = True
+        elif a.startswith("--domains="):
+            explicit_domains = a[len("--domains="):]
+        elif a == "--domains" and i + 1 < len(argv):
+            i += 1
+            explicit_domains = argv[i]
         i += 1
 
     marketplace_dir = str(MARKETPLACE)
@@ -208,21 +220,149 @@ def cmd_end_preflight(argv: list) -> dict:
 
     return {
         "flags": {
-            "explicit_project": explicit_project,
-            "no_push":      no_push or auto_no_push,
-            "no_compact":   no_compact,
-            "learning_only": learning_only,
-            "auto_no_push": auto_no_push,
+            "explicit_project":  explicit_project,
+            "no_push":           no_push or auto_no_push,
+            "no_compact":        no_compact,
+            "learning_only":     learning_only,
+            "auto_no_push":      auto_no_push,
+            "no_decay_check":    no_decay_check,
+            "explicit_domains":  explicit_domains,
         },
         "git": {
             "marketplace": push_status(marketplace_dir),
             "project":     push_status(explicit_project) if explicit_project else {"state": "na"},
         },
         "paths": {
-            "marketplace": marketplace_dir,
-            "project":     explicit_project,
+            "marketplace":  marketplace_dir,
+            "project":      explicit_project,
             "project_name": Path(explicit_project).name if explicit_project else "",
         },
+    }
+
+
+def cmd_session_digest(argv: list) -> dict:
+    """
+    Session Pre-Pass Digest — LSTM Attention/KV-Cache pattern.
+
+    Extracts a compact JSON digest shared by all Phase 1 agents, eliminating
+    4x redundant full-history reads.
+
+    Returns:
+      domains_used    – CS domains active this session (git-diff heuristic)
+      skill_snapshot  – knowhow index (number, title, date, tier) — NOT full body
+      btw_pending     – list of pending BTW items
+      btw_count       – total pending BTW count
+      stale_entries   – knowhow entries flagged for decay review (Forget Gate)
+    """
+    skill_path = ""
+    btw_file = str(HOME / ".claude" / ".experiencing-btw.json")
+
+    i = 0
+    while i < len(argv):
+        a = argv[i]
+        if a == "--skill" and i + 1 < len(argv):
+            i += 1
+            skill_path = argv[i]
+        elif a.startswith("--skill="):
+            skill_path = a[len("--skill="):]
+        elif a == "--btw-file" and i + 1 < len(argv):
+            i += 1
+            btw_file = argv[i]
+        elif a.startswith("--btw-file="):
+            btw_file = a[len("--btw-file="):]
+        i += 1
+
+    # ── 1. Knowhow index (titles + dates only, no full body) ──────────────────
+    skill_snapshot: list[dict] = []
+    if skill_path and Path(skill_path).is_file():
+        text = Path(skill_path).read_text(encoding="utf-8", errors="ignore")
+        # Match: ### N. Title (YYYY-MM-DD)
+        # Also capture optional <!-- tier: principle|tactical --> comment
+        header_re = re.compile(
+            r"^### (\d+)\.\s+(.+?)\s+\((\d{4}-\d{2}-\d{2})\)",
+            re.MULTILINE,
+        )
+        tier_re = re.compile(r"<!--\s*tier:\s*(principle|tactical)\s*-->")
+        entries = list(header_re.finditer(text))
+        for m in entries:
+            n, title, date_str = m.group(1), m.group(2).strip(), m.group(3)
+            # Look for tier comment in the 3 lines after the header
+            after = text[m.end():m.end() + 200]
+            tier_match = tier_re.search(after)
+            tier = tier_match.group(1) if tier_match else "tactical"  # default = tactical
+            skill_snapshot.append({"n": int(n), "title": title, "date": date_str, "tier": tier})
+
+    # ── 2. BTW pending items ──────────────────────────────────────────────────
+    btw_pending: list[dict] = []
+    if Path(btw_file).is_file():
+        try:
+            items = json.loads(Path(btw_file).read_text(encoding="utf-8"))
+            if isinstance(items, list):
+                btw_pending = [
+                    {"id": it.get("id"), "idea": it.get("idea", ""), "date": it.get("date", "")}
+                    for it in items
+                    if isinstance(it, dict) and it.get("status") == "pending"
+                ]
+        except (json.JSONDecodeError, OSError):
+            pass
+
+    # ── 3. Domain usage (GRU Update Gate) — git diff heuristic ───────────────
+    DOMAIN_PATTERNS: dict[str, list[str]] = {
+        "test":   ["MJ-test-v", "/MJ-test/"],
+        "plan":   ["MJ-plan-v", "/MJ-plan/"],
+        "review": ["MJ-codebase-review-v", "/MJ-codebase-review/"],
+        "design": ["mj-design-v", "/mj-design/"],
+        "ceo":    ["mj-ceo-v", "/mj-ceo/"],
+        "clarify":["mj-clarify-v", "/mj-clarify/"],
+        "ship":   ["mj-ship-v", "/mj-ship/"],
+    }
+    marketplace_dir = str(MARKETPLACE)
+    changed_files = _git(marketplace_dir, "diff", "--name-only", "HEAD~5..HEAD")
+    domains_used = [
+        domain
+        for domain, patterns in DOMAIN_PATTERNS.items()
+        if any(p in changed_files for p in patterns)
+    ]
+    # Always include mj-end itself if its files changed
+    if "mj-end-v" in changed_files or "/mj-end/" in changed_files:
+        if "mj-end" not in domains_used:
+            domains_used.append("mj-end")
+
+    # ── 4. Knowledge Decay check (Forget Gate) ────────────────────────────────
+    TODAY = datetime.date.today()
+    STALE_THRESHOLD_DAYS = 30
+    DECAY_KEYWORDS = [
+        "osascript", "window.open", "bun --watch", "clipboarditem",
+        "v4", "v5", "config.toml", ".env", "api key",
+        "bun.write", "bun.spawn", "osascript -e",
+    ]
+    stale_entries: list[dict] = []
+    for entry in skill_snapshot:
+        if entry["tier"] == "principle":
+            continue
+        try:
+            entry_date = datetime.date.fromisoformat(entry["date"])
+        except ValueError:
+            continue
+        age = (TODAY - entry_date).days
+        if age < STALE_THRESHOLD_DAYS:
+            continue
+        title_lower = entry["title"].lower()
+        if any(kw.lower() in title_lower for kw in DECAY_KEYWORDS):
+            stale_entries.append({
+                "n":    entry["n"],
+                "title": entry["title"],
+                "date":  entry["date"],
+                "age_days": age,
+            })
+
+    return {
+        "domains_used":    domains_used,
+        "skill_snapshot":  skill_snapshot,
+        "btw_pending":     btw_pending,
+        "btw_count":       len(btw_pending),
+        "stale_entries":   stale_entries,
+        "stale_count":     len(stale_entries),
     }
 
 
@@ -263,6 +403,7 @@ COMMANDS = {
     "git-status":      lambda rest: cmd_git_status(rest),
     "resolve-partner": lambda rest: cmd_resolve_partner(rest),
     "plugin-versions": lambda rest: cmd_plugin_versions(),
+    "session-digest":  lambda rest: cmd_session_digest(rest),
 }
 
 

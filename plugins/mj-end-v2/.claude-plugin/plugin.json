@@ -1,7 +1,7 @@
 {
   "name": "mj-end",
-  "version": "1.1.0",
-  "description": "CS Session Closing — 4-Agent parallel analysis → TIL save → plugin version-up → GitHub push → context compact suggestion",
+  "version": "1.2.0",
+  "description": "CS Session Closing — Session Digest (Attention) → 4-Agent parallel analysis → Learning Gate (Input Gate) → Selective version-up (GRU Update Gate) → Knowledge Decay (Forget Gate) → Structured compact handoff (Hidden State)",
   "author": {
     "name": "gwanli",
     "url": "https://github.com/nh-investment-squad1"
