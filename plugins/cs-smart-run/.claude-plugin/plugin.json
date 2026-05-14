@@ -1,0 +1,12 @@
+{
+  "name": "smart-run",
+  "version": "1.0.0",
+  "description": "Two-phase orchestrator: Plan with Opus, Execute with Sonnet agents in parallel",
+  "author": {
+    "name": "gwanli",
+    "url": "https://github.com/nh-investment-squad1"
+  },
+  "repository": "https://github.com/nh-investment-squad1/MJnCompany_2-0",
+  "license": "MIT",
+  "keywords": ["workflow", "orchestration", "planning", "opus", "sonnet", "multi-agent"]
+}

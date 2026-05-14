@@ -1,0 +1,12 @@
+{
+  "name": "cs-design-sample1",
+  "version": "1.0.0",
+  "description": "Crextio-inspired design guide: warm cream palette, amber/slate accents, dark table headers, KPI cards — for Tailwind/Next.js dashboard UIs",
+  "author": {
+    "name": "nh-investment-squad1",
+    "url": "https://github.com/nh-investment-squad1"
+  },
+  "repository": "https://github.com/nh-investment-squad1/MJnCompany_2-0",
+  "license": "MIT",
+  "keywords": ["design", "ui", "tailwind", "crextio", "dashboard", "design-system", "amber", "slate"]
+}

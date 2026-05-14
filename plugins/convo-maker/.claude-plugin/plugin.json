@@ -1,0 +1,12 @@
+{
+  "name": "convo-maker",
+  "version": "1.0.0",
+  "description": "Transforms session Q&A into natural American English conversations for real-world language learning",
+  "author": {
+    "name": "gwanli",
+    "url": "https://github.com/gwanli"
+  },
+  "repository": "https://github.com/nh-investment-squad1/MJnCompany_2-0",
+  "license": "MIT",
+  "keywords": ["english", "conversation", "american", "language-learning", "dialog", "native-speaker"]
+}
