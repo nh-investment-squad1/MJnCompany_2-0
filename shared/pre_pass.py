@@ -89,9 +89,9 @@ def push_status(repo: str) -> dict:
 
 def cmd_ceo_preflight() -> dict:
     plugins = {
-        "test":         latest_plugin("CS-test-"),
-        "plan":         latest_plugin("CS-plan-"),
-        "review":       latest_plugin("CS-codebase-review-"),
+        "test":         latest_plugin("MJ-test-"),
+        "plan":         latest_plugin("MJ-plan-"),
+        "review":       latest_plugin("MJ-codebase-review-"),
         "design":       latest_plugin("cs-design-"),
         "smartrun":     latest_plugin("cs-smart-run"),
         "clarify":      latest_plugin("cs-clarify-"),
@@ -242,9 +242,9 @@ def cmd_resolve_partner(argv: list) -> dict:
 
 def cmd_plugin_versions() -> dict:
     prefixes = [
-        ("CS-test",             "CS-test-"),
-        ("CS-plan",             "CS-plan-"),
-        ("CS-codebase-review",  "CS-codebase-review-"),
+        ("MJ-test",             "MJ-test-"),
+        ("MJ-plan",             "MJ-plan-"),
+        ("MJ-codebase-review",  "MJ-codebase-review-"),
         ("cs-design",           "cs-design-"),
         ("cs-smart-run",        "cs-smart-run"),
         ("cs-clarify",          "cs-clarify-"),

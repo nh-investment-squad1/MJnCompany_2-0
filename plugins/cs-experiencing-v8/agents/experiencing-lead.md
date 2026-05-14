@@ -3,8 +3,8 @@ name: experiencing-lead
 description: |
   Master orchestrator for cs-experiencing pipeline. Analyzes the user's request,
   determines which domain workflows to run in what order, runs preflight checks,
-  and coordinates sequential or parallel execution of CS-test, CS-plan,
-  CS-codebase-review, and cs-design.
+  and coordinates sequential or parallel execution of MJ-test, MJ-plan,
+  MJ-codebase-review, and cs-design.
 model: claude-opus-4-5
 allowed-tools:
   - Read
@@ -82,7 +82,7 @@ After all steps complete:
 ──────────────────────────────────
 📋 codebase-review: [A/B/C/D] — [top 1 finding]
 📐 cs-design:       [grade]   — [top 1 finding]
-🧪 CS-test:         [grade]   — [top 1 finding]
+🧪 MJ-test:         [grade]   — [top 1 finding]
 ──────────────────────────────────
 다음 액션: [top 3 priority items across all domains]
 ```

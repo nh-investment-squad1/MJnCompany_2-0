@@ -1,0 +1,12 @@
+{
+  "name": "MJ-plan",
+  "version": "1.0.0",
+  "description": "TDD + Clean Architecture 4-agent planning - domain analysis, architecture, test strategy, implementation checklist",
+  "author": {
+    "name": "nh-investment-squad1",
+    "url": "https://github.com/nh-investment-squad1"
+  },
+  "repository": "https://github.com/nh-investment-squad1/MJnCompany_2-0",
+  "license": "MIT",
+  "keywords": ["tdd", "clean-architecture", "ddd", "planning", "agent-teams"]
+}

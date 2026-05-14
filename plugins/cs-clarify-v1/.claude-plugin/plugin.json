@@ -1,7 +1,7 @@
 {
   "name": "cs-clarify",
   "version": "1.0.0",
-  "description": "Requirements clarification before planning — 4-agent Socratic elicitation team. Surfaces hidden assumptions, validates scope, prevents over-engineering before CS-plan runs.",
+  "description": "Requirements clarification before planning — 4-agent Socratic elicitation team. Surfaces hidden assumptions, validates scope, prevents over-engineering before MJ-plan runs.",
   "author": {
     "name": "gwanli",
     "url": "https://github.com/nh-investment-squad1"

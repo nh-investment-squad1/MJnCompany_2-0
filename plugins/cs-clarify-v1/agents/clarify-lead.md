@@ -48,7 +48,7 @@ FEATURE 설명을 포함하여 requirements-interviewer, scope-validator, assump
 ```
 ✅ CS-clarify 완료
 📄 CLARIFY.md 생성됨
-🚀 다음 단계: /CS-plan "[기능]"
+🚀 다음 단계: /MJ-plan "[기능]"
 ```
 
 TeamDelete 호출로 팀 종료.

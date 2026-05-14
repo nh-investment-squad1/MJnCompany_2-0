@@ -13,7 +13,7 @@
     },
     {
       "name": "cs-ceo",
-      "description": "🧭 CEO — Estimates effort and autonomously dispatches across CS-test/CS-plan/CS-codebase-review/cs-design/cs-smart-run. v5.2 adds External Knowledge Gate + partnership protocols.",
+      "description": "🧭 CEO — Estimates effort and autonomously dispatches across MJ-test/MJ-plan/MJ-codebase-review/cs-design/cs-smart-run. v5.2 adds External Knowledge Gate + partnership protocols.",
       "source": "./plugins/cs-ceo-v11"
     },
     {
@@ -22,9 +22,9 @@
       "source": "./plugins/cs-clarify-v1"
     },
     {
-      "name": "CS-plan",
+      "name": "MJ-plan",
       "description": "🏗️ Architect — TDD + Clean Architecture 4-agent planner. Domain analysis, architecture design, test strategy, implementation checklist.",
-      "source": "./plugins/CS-plan-v21"
+      "source": "./plugins/MJ-plan-v21"
     },
     {
       "name": "cs-design",
@@ -37,14 +37,14 @@
       "source": "./plugins/cs-design-sample1"
     },
     {
-      "name": "CS-test",
+      "name": "MJ-test",
       "description": "🧪 QA Engineer — 14-agent web testing: security, SEO, performance, accessibility, DB, PWA, touch, image optimization.",
-      "source": "./plugins/CS-test-v26"
+      "source": "./plugins/MJ-test-v26"
     },
     {
-      "name": "CS-codebase-review",
+      "name": "MJ-codebase-review",
       "description": "🔍 Code Reviewer — 5-agent parallel review: Architecture, Quality, Security, Performance, Maintainability.",
-      "source": "./plugins/CS-codebase-review-v29"
+      "source": "./plugins/MJ-codebase-review-v29"
     },
     {
       "name": "cs-ship",
@@ -58,7 +58,7 @@
     },
     {
       "name": "cs-experiencing",
-      "description": "📚 Knowledge Keeper — Meta-router across CS-test / CS-plan / CS-codebase-review / cs-design with versioned learnings. Includes /cs-end session-wrap.",
+      "description": "📚 Knowledge Keeper — Meta-router across MJ-test / MJ-plan / MJ-codebase-review / cs-design with versioned learnings. Includes /cs-end session-wrap.",
       "source": "./plugins/cs-experiencing-v8"
     },
     {

@@ -349,9 +349,9 @@ fi
 ```bash
 BASE="$HOME/.claude/plugins/marketplaces/MJnCompany_2-0/plugins"
 
-LATEST_TEST=$(ls -d "$BASE/CS-test-v"* 2>/dev/null | sort -V | tail -1)
-LATEST_PLAN=$(ls -d "$BASE/CS-plan-v"* 2>/dev/null | sort -V | tail -1)
-LATEST_REVIEW=$(ls -d "$BASE/CS-codebase-review-v"* 2>/dev/null | sort -V | tail -1)
+LATEST_TEST=$(ls -d "$BASE/MJ-test-v"* 2>/dev/null | sort -V | tail -1)
+LATEST_PLAN=$(ls -d "$BASE/MJ-plan-v"* 2>/dev/null | sort -V | tail -1)
+LATEST_REVIEW=$(ls -d "$BASE/MJ-codebase-review-v"* 2>/dev/null | sort -V | tail -1)
 LATEST_DESIGN=$(ls -d "$BASE/cs-design-v"* 2>/dev/null | sort -V | tail -1)
 LATEST_SMARTRUN=$(ls -d "$BASE/cs-smart-run"* 2>/dev/null | sort -V | tail -1)
 ```
@@ -408,20 +408,20 @@ SMARTRUN_SKILL="$LATEST_SMARTRUN/skills/smart-run/SKILL.md"
 Task() → 파트너 / Task() → CS 도메인들
 → 결과 수집 → CEO 종합
 ```
-예: gstack (시트 준비) ‖ CS-codebase-review 동시 실행
+예: gstack (시트 준비) ‖ MJ-codebase-review 동시 실행
 
 #### 모드 P-Post — CEO 먼저, 파트너 후처리
 조건: 파트너 감지 + 파트너가 CEO 결과를 처리
 ```
 모드 A/B/C 실행 → CEO 리포트 산출 → Skill()로 파트너 호출
 ```
-예: CS-test 완료 → gstack으로 결과 구글 드라이브 문서화
+예: MJ-test 완료 → gstack으로 결과 구글 드라이브 문서화
 
 #### 모드 P-Wraps — 파트너 방법론이 전체를 감싸는 구조
 조건: bkit:pdca 또는 전체 PDCA 사이클 요청
 ```
 bkit:pdca SKILL.md 읽기 → PDCA 방법론 안에서 CEO가 CS 도메인 오케스트레이션
-Plan: CS-plan / Do: CEO 오케스트레이션 / Check: CS-test + CS-codebase-review / Report: CEO 종합
+Plan: MJ-plan / Do: CEO 오케스트레이션 / Check: MJ-test + MJ-codebase-review / Report: CEO 종합
 ```
 
 ---
@@ -432,10 +432,10 @@ Plan: CS-plan / Do: CEO 오케스트레이션 / Check: CS-test + CS-codebase-rev
 
 | 요청 패턴 | 도메인 | 방식 |
 |-----------|--------|------|
-| URL / "테스트" | CS-test | 모드 A |
-| URL / "테스트" (cmux 환경) | CS-test (cmux browser 모드) | 모드 A |
-| "플랜" / "설계" / "기능 추가" (명확) | CS-plan | 모드 A |
-| "코드 리뷰" / "품질 체크" | CS-codebase-review | 모드 A |
+| URL / "테스트" | MJ-test | 모드 A |
+| URL / "테스트" (cmux 환경) | MJ-test (cmux browser 모드) | 모드 A |
+| "플랜" / "설계" / "기능 추가" (명확) | MJ-plan | 모드 A |
+| "코드 리뷰" / "품질 체크" | MJ-codebase-review | 모드 A |
 | "디자인 리뷰" / "UI 검토" | cs-design | 모드 A |
 | "전체 분석" | review → design → test | 모드 B 순차 |
 | "뭐가 문제야" / "이상해" | review + test | 모드 B 병렬 |
@@ -590,7 +590,7 @@ fi
 
 ### 15. 빌드 시스템 크로스 디바이스 버그 — Mode B 인라인 분석으로 절대경로 즉시 진단 (2026-05-01)
 - **상황**: Tauri 앱 DMG 빌드가 iCloud ETIMEDOUT + E0601(main 미발견)로 반복 실패. 다른 Mac에서도 빌드 오류 보고됨.
-- **판단**: Mode B — CS-codebase-review 인라인 분석. `.cargo/config.toml`의 하드코딩 절대경로가 크로스 디바이스 실패의 근본 원인으로 즉시 특정.
+- **판단**: Mode B — MJ-codebase-review 인라인 분석. `.cargo/config.toml`의 하드코딩 절대경로가 크로스 디바이스 실패의 근본 원인으로 즉시 특정.
 - **결과**: 크로스 디바이스 문제 해결. fix-dmg stale 파일 버그 + 로그 offset UTF-8 버그 동시 발견 및 수정. 8파일 커밋 + 푸시.
 - **교훈**: "다른 기기에서도 재현"은 **환경 고유값 하드코딩**(절대경로, username, 홈 디렉토리)을 1순위 의심. `.cargo/config.toml`, `CMakeLists.txt`, Makefile 절대경로를 코드 리뷰 체크리스트 필수 항목으로.
 

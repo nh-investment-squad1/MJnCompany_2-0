@@ -6,9 +6,9 @@
 
 | 도메인 | 현재 버전 | 내용 |
 |--------|-----------|------|
-| **CS-test** | v14 | 웹 테스트 (14-agent playwright 팀) |
-| **CS-plan** | v12 | TDD+CleanArch 플랜 (4-agent: domain-analyst, arch-designer, tdd-strategist, checklist-builder) |
-| **CS-codebase-review** | v14 | 5-관점 병렬 코드 리뷰 (Architecture/Quality/Security/Performance/Maintainability) |
+| **MJ-test** | v14 | 웹 테스트 (14-agent playwright 팀) |
+| **MJ-plan** | v12 | TDD+CleanArch 플랜 (4-agent: domain-analyst, arch-designer, tdd-strategist, checklist-builder) |
+| **MJ-codebase-review** | v14 | 5-관점 병렬 코드 리뷰 (Architecture/Quality/Security/Performance/Maintainability) |
 | **cs-design** | v9 | 5-관점 병렬 디자인 리뷰 (visual-hierarchy/interaction-quality/design-system-consistency/responsive-accessibility/anti-pattern-detector) |
 | **cs-clarify** | v1 | [신규] 요구사항 명료화 (4-agent: clarify-lead, requirements-interviewer, scope-validator, assumption-mapper) |
 | **cs-ship** | v1 | [신규] PR 전 검증 게이트 (4-agent: ship-lead, pre-pr-validator, coverage-auditor, commit-crafter) |
@@ -18,13 +18,13 @@
 
 ```
 /cs-experiencing                                          # 도메인 목록 및 버전 확인
-/cs-experiencing test [URL]                               # CS-test 실행 (14개 에이전트로 웹 테스트)
-/cs-experiencing plan [task]                              # CS-plan 실행
-/cs-experiencing review [path] [--focus aspect]           # CS-codebase-review 실행 (5-관점 코드 리뷰)
+/cs-experiencing test [URL]                               # MJ-test 실행 (14개 에이전트로 웹 테스트)
+/cs-experiencing plan [task]                              # MJ-plan 실행
+/cs-experiencing review [path] [--focus aspect]           # MJ-codebase-review 실행 (5-관점 코드 리뷰)
 /cs-experiencing design [path] [--focus aspect] [--fix]  # cs-design 실행 (5-관점 디자인 리뷰)
-/cs-experiencing version-up test                          # CS-test 버전 업그레이드
-/cs-experiencing version-up plan                          # CS-plan 버전 업그레이드
-/cs-experiencing version-up review                        # CS-codebase-review 버전 업그레이드
+/cs-experiencing version-up test                          # MJ-test 버전 업그레이드
+/cs-experiencing version-up plan                          # MJ-plan 버전 업그레이드
+/cs-experiencing version-up review                        # MJ-codebase-review 버전 업그레이드
 /cs-experiencing version-up design                        # cs-design 버전 업그레이드
 /cs-experiencing version-up all                           # 6개 도메인 한번에 버전업
 /cs-clarify "[요청]"                                      # [신규] 요구사항 명료화 (플랜 전)
@@ -45,21 +45,21 @@
 ```
 plugins/
 ├── cs-experiencing-v4/    ← 이 플러그인 (오케스트레이터)
-├── CS-test-v4/
+├── MJ-test-v4/
 │   ├── VERSION            # 현재: 4
 │   ├── agents/            # 14개 테스트 에이전트
-│   ├── skills/CS-test/SKILL.md
-│   └── commands/CS-test.md
-├── CS-plan-v4/
+│   ├── skills/MJ-test/SKILL.md
+│   └── commands/MJ-test.md
+├── MJ-plan-v4/
 │   ├── VERSION            # 현재: 4
 │   ├── agents/            # 4개: domain-analyst, arch-designer, tdd-strategist, checklist-builder
-│   ├── commands/CS-plan.md
+│   ├── commands/MJ-plan.md
 │   ├── knowledge/README.md
-│   └── skills/CS-plan/SKILL.md
-├── CS-codebase-review-v4/
+│   └── skills/MJ-plan/SKILL.md
+├── MJ-codebase-review-v4/
 │   ├── VERSION            # 현재: 4
-│   ├── skills/CS-codebase-review/SKILL.md
-│   └── commands/CS-codebase-review.md
+│   ├── skills/MJ-codebase-review/SKILL.md
+│   └── commands/MJ-codebase-review.md
 └── cs-design-v1/          ← 신규
     ├── VERSION            # 현재: 1
     ├── agents/design-lead.md

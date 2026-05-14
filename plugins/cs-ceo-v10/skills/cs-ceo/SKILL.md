@@ -2,7 +2,7 @@
 name: cs-ceo
 user-invocable: true
 description: |
-  CS 시리즈 CEO 오케스트레이터. 자연어 요청을 받아 공수 추정 후 CS-test/CS-plan/CS-codebase-review/cs-design/cs-smart-run 중 최적 조합을 자율 선택·배분한다.
+  CS 시리즈 CEO 오케스트레이터. 자연어 요청을 받아 공수 추정 후 MJ-test/MJ-plan/MJ-codebase-review/cs-design/cs-smart-run 중 최적 조합을 자율 선택·배분한다.
   v5.1: Universal Partnership Protocol — "with [어떤스킬이든]:" 구문으로 시스템에 설치된 모든 스킬과 협업 가능.
   v5.2: External Knowledge Gate — 외부 지식이 필요하다고 판단되면 지체 없이 context7-auto-research를 자동 호출하여 학습 후 진행. 학습 결과는 버전업 시 노하우로 영속화.
   설치된 스킬을 자동 탐색하고, 타이밍(Pre/In/Post/Wraps)을 description 기반으로 자동 추론한다.
@@ -218,7 +218,7 @@ CEO 에이전트가 반환한 종합 리포트를 그대로 출력한다.
 ### 15. 빌드 시스템 크로스 디바이스 버그 — Mode B 인라인 분석으로 절대경로 즉시 진단 (2026-05-01)
 
 - **상황**: Tauri 앱 DMG 빌드가 iCloud ETIMEDOUT + E0601(main 미발견)로 반복 실패. 다른 Mac에서도 빌드 오류 보고됨.
-- **판단**: Mode B — CS-codebase-review 인라인 분석. `.cargo/config.toml`의 하드코딩 절대경로(`/Users/gwanli/cargo-targets/portmanager`)가 크로스 디바이스 실패의 근본 원인으로 즉시 특정. `build-macos.ts` 래퍼 생성으로 `CARGO_TARGET_DIR=$HOME/...` 동적 설정 제안.
+- **판단**: Mode B — MJ-codebase-review 인라인 분석. `.cargo/config.toml`의 하드코딩 절대경로(`/Users/gwanli/cargo-targets/portmanager`)가 크로스 디바이스 실패의 근본 원인으로 즉시 특정. `build-macos.ts` 래퍼 생성으로 `CARGO_TARGET_DIR=$HOME/...` 동적 설정 제안.
 - **결과**: 크로스 디바이스 문제 해결. 추가로 fix-dmg stale 파일 버그 + 로그 offset UTF-8 버그 동시 발견 및 수정. 8파일 커밋 + 푸시.
 - **교훈**: 빌드 실패 디버깅에서 "다른 기기에서도 재현"은 **환경 고유값 하드코딩**(절대경로, username, 홈 디렉토리)을 1순위 의심. 코드 리뷰 시 `.cargo/config.toml`, `CMakeLists.txt`, Makefile의 절대경로 항목을 체크리스트 필수 항목으로 추가.
 

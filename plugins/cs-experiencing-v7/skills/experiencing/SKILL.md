@@ -24,9 +24,9 @@ allowed-tools:
 ```
 plugins/
 ├── cs-experiencing-v4/      ← 이 플러그인 (오케스트레이터, v4)
-├── CS-test-v13/             ← 14-agent 웹 테스트 도메인
-├── CS-plan-v11/             ← TDD+CleanArch 4-agent 플랜 도메인
-├── CS-codebase-review-v13/  ← 5-agent 코드 리뷰 도메인
+├── MJ-test-v13/             ← 14-agent 웹 테스트 도메인
+├── MJ-plan-v11/             ← TDD+CleanArch 4-agent 플랜 도메인
+├── MJ-codebase-review-v13/  ← 5-agent 코드 리뷰 도메인
 └── cs-design-v8/            ← 5-agent 디자인 리뷰 도메인
 ```
 
@@ -36,9 +36,9 @@ plugins/
 
 ```
 /cs-experiencing                                          # 도메인 목록 + 버전 현황 표시
-/cs-experiencing test [URL]                               # CS-test 실행 (14-agent 웹 테스트)
-/cs-experiencing plan [task]                              # CS-plan 실행
-/cs-experiencing review [path] [--focus aspect]           # CS-codebase-review 실행 (5-관점 코드 리뷰)
+/cs-experiencing test [URL]                               # MJ-test 실행 (14-agent 웹 테스트)
+/cs-experiencing plan [task]                              # MJ-plan 실행
+/cs-experiencing review [path] [--focus aspect]           # MJ-codebase-review 실행 (5-관점 코드 리뷰)
 /cs-experiencing design [path] [--focus aspect] [--fix]  # CS-design 실행 (5-관점 디자인 리뷰)
 /cs-experiencing update                                   # 4개 스킬 모두 버전업 (version-up all 단축키)
 /cs-experiencing version-up [domain]                      # 도메인 버전 증가 (test/plan/review/design)
@@ -59,7 +59,7 @@ plugins/
 
 ```bash
 BASE="$HOME/.claude/plugins/marketplaces/MJnCompany_2-0/plugins"
-for domain in CS-test CS-plan CS-codebase-review; do
+for domain in MJ-test MJ-plan MJ-codebase-review; do
   VERSION=$(cat "$BASE/${domain}-v"*/VERSION 2>/dev/null || echo "?")
   echo "📦 $domain | 현재 콘텐츠 버전: $VERSION"
 done
@@ -67,34 +67,34 @@ done
 
 ### `/cs-experiencing test [URL]`
 
-1. 최신 CS-test 도메인 경로 찾기:
+1. 최신 MJ-test 도메인 경로 찾기:
    ```bash
    BASE="$HOME/.claude/plugins/marketplaces/MJnCompany_2-0/plugins"
-   LATEST_TEST=$(ls -d "$BASE/CS-test-v"* 2>/dev/null | sort -V | tail -1)
+   LATEST_TEST=$(ls -d "$BASE/MJ-test-v"* 2>/dev/null | sort -V | tail -1)
    ```
 2. `$LATEST_TEST/VERSION` 읽기 → 현재 버전 확인
-3. `$LATEST_TEST/skills/CS-test/SKILL.md` 프로토콜 실행
+3. `$LATEST_TEST/skills/MJ-test/SKILL.md` 프로토콜 실행
 4. URL을 대상으로 14-agent 팀 가동
 
 ### `/cs-experiencing plan [task]`
 
-1. 최신 CS-plan 도메인 경로 찾기:
+1. 최신 MJ-plan 도메인 경로 찾기:
    ```bash
    BASE="$HOME/.claude/plugins/marketplaces/MJnCompany_2-0/plugins"
-   LATEST_PLAN=$(ls -d "$BASE/CS-plan-v"* 2>/dev/null | sort -V | tail -1)
+   LATEST_PLAN=$(ls -d "$BASE/MJ-plan-v"* 2>/dev/null | sort -V | tail -1)
    ```
 2. `$LATEST_PLAN/VERSION` 읽기 → 현재 버전 확인
-3. `$LATEST_PLAN/skills/CS-plan/SKILL.md` 프로토콜 실행
+3. `$LATEST_PLAN/skills/MJ-plan/SKILL.md` 프로토콜 실행
 
 ### `/cs-experiencing review [path] [--focus aspect]`
 
-1. 최신 CS-codebase-review 도메인 경로 찾기:
+1. 최신 MJ-codebase-review 도메인 경로 찾기:
    ```bash
    BASE="$HOME/.claude/plugins/marketplaces/MJnCompany_2-0/plugins"
-   LATEST_REVIEW=$(ls -d "$BASE/CS-codebase-review-v"* 2>/dev/null | sort -V | tail -1)
+   LATEST_REVIEW=$(ls -d "$BASE/MJ-codebase-review-v"* 2>/dev/null | sort -V | tail -1)
    ```
 2. `$LATEST_REVIEW/VERSION` 읽기 → 현재 버전 확인
-3. `$LATEST_REVIEW/skills/CS-codebase-review/SKILL.md` 프로토콜 실행
+3. `$LATEST_REVIEW/skills/MJ-codebase-review/SKILL.md` 프로토콜 실행
 3. 인수 파싱:
    - `[path]` 없음 → 현재 작업 디렉토리 전체 분석
    - `[path]` 있음 → 해당 경로만 분석
@@ -104,7 +104,7 @@ done
 
 ### `/cs-experiencing update`
 
-`version-up all`의 단축 명령어. 3개 도메인(CS-test, CS-plan, CS-codebase-review)을 순차적으로 버전업합니다.
+`version-up all`의 단축 명령어. 3개 도메인(MJ-test, MJ-plan, MJ-codebase-review)을 순차적으로 버전업합니다.
 
 아래 `version-up all` 프로토콜과 동일하게 실행.
 
@@ -307,9 +307,9 @@ fi
 **`all` 완료 후 종합 안내:**
 ```
 ✅ 전체 버전업 완료
-📦 CS-test: v[N] → v[N+1]  (학습 추가/스킵)
-📦 CS-plan: v[N] → v[N+1]  (학습 추가/스킵)
-📦 CS-codebase-review: v[N] → v[N+1]  (학습 추가/스킵)
+📦 MJ-test: v[N] → v[N+1]  (학습 추가/스킵)
+📦 MJ-plan: v[N] → v[N+1]  (학습 추가/스킵)
+📦 MJ-codebase-review: v[N] → v[N+1]  (학습 추가/스킵)
 📦 cs-design: v[N] → v[N+1]  (학습 추가/스킵)
 📦 cs-ceo: v[N] → v[N+1]  (학습 추가/스킵)
 ```
@@ -367,7 +367,7 @@ git -C "$HOME/.claude/plugins/marketplaces/MJnCompany_2-0" commit -m "wip: cs-ex
 
 ```bash
 BASE="$HOME/.claude/plugins/marketplaces/MJnCompany_2-0/plugins"
-for PATTERN in "CS-test-v" "CS-plan-v" "CS-codebase-review-v" "cs-design-v"; do
+for PATTERN in "MJ-test-v" "MJ-plan-v" "MJ-codebase-review-v" "cs-design-v"; do
   LATEST=$(ls -d "$BASE/${PATTERN}"* 2>/dev/null | sort -V | tail -1)
   if [ -n "$LATEST" ]; then
     VER=$(cat "$LATEST/VERSION" 2>/dev/null || echo "?")
@@ -381,7 +381,7 @@ done
 
 ## 버전 철학
 
-- **도메인 디렉토리명** (`CS-test-v2`): 스키마/구조 버전 — 큰 구조 변경 시에만 변경
+- **도메인 디렉토리명** (`MJ-test-v2`): 스키마/구조 버전 — 큰 구조 변경 시에만 변경
 - **VERSION 파일**: 콘텐츠 버전 — 새 학습이 추가될 때마다 증가
 - **plugin.json version**: 전체 플러그인 버전 — semver (major.minor.patch)
 

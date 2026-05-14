@@ -7,10 +7,10 @@
 ## 워크플로우 한눈에 보기
 
 ```
-[요청이 모호] → /cs-clarify → [요청이 명확] → /CS-plan → [구현] → /cs-ship → PR
-[코드 리뷰]  → /CS-codebase-review
+[요청이 모호] → /cs-clarify → [요청이 명확] → /MJ-plan → [구현] → /cs-ship → PR
+[코드 리뷰]  → /MJ-codebase-review
 [디자인 리뷰] → /cs-design
-[웹 테스트]  → /CS-test
+[웹 테스트]  → /MJ-test
 ```
 
 ---
@@ -18,7 +18,7 @@
 ## 상황 1 — 새 기능을 만들어야 한다 (요청이 명확한 경우)
 
 ```
-/CS-plan "로그인 기능 추가 — JWT 토큰, 이메일+비밀번호"
+/MJ-plan "로그인 기능 추가 — JWT 토큰, 이메일+비밀번호"
 ```
 
 완료 후 구현 → PR 전:
@@ -36,7 +36,7 @@
 
 결과로 `CLARIFY.md` 생성됨 → 그 다음:
 ```
-/CS-plan "사용자 관리 시스템 — CLARIFY.md 참고"
+/MJ-plan "사용자 관리 시스템 — CLARIFY.md 참고"
 ```
 
 ---
@@ -59,19 +59,19 @@
 ## 상황 4 — 코드 품질이 걱정될 때
 
 ```
-/CS-codebase-review
+/MJ-codebase-review
 ```
 
 특정 파일/폴더만:
 ```
-/CS-codebase-review src/auth
+/MJ-codebase-review src/auth
 ```
 
 특정 관점만:
 ```
-/CS-codebase-review --focus security
-/CS-codebase-review --focus architecture
-/CS-codebase-review --focus performance
+/MJ-codebase-review --focus security
+/MJ-codebase-review --focus architecture
+/MJ-codebase-review --focus performance
 ```
 
 ---
@@ -97,7 +97,7 @@
 ## 상황 6 — 웹사이트/앱 전체 테스트
 
 ```
-/CS-test https://your-site.com
+/MJ-test https://your-site.com
 ```
 
 ---
@@ -146,7 +146,7 @@
 
 ## 도메인별 포커스 옵션 모아보기
 
-### /CS-codebase-review --focus
+### /MJ-codebase-review --focus
 | 옵션 | 내용 |
 |------|------|
 | `architecture` | 구조, 레이어, 의존성 |
@@ -173,7 +173,7 @@
 /cs-clarify "기능 설명"
 
 # 2. 코딩 플랜 생성
-/CS-plan "기능 설명"
+/MJ-plan "기능 설명"
 
 # 3. 구현 (Claude가 PLAN.md 따라 구현)
 

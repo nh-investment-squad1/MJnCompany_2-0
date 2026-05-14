@@ -2,7 +2,7 @@
 
 > 🇺🇸 English · [🇰🇷 한국어](./README.ko.md)
 
-**TL;DR — One marketplace, eleven AI teammates.** Install it once, and you can call a CEO, PM, Architect, Designer, QA Engineer, Code Reviewer, and DevOps engineer from inside Claude Code with simple slash commands like `/cs-ceo` or `/CS-test`.
+**TL;DR — One marketplace, eleven AI teammates.** Install it once, and you can call a CEO, PM, Architect, Designer, QA Engineer, Code Reviewer, and DevOps engineer from inside Claude Code with simple slash commands like `/cs-ceo` or `/MJ-test`.
 
 > ⚡ **Optional: Install [uv](https://docs.astral.sh/uv/) for 70%+ token savings on code analysis** — `brew install uv` or `curl -LsSf https://astral.sh/uv/install.sh | sh`. Works without it too (automatic fallback).
 
@@ -35,11 +35,11 @@ You don't need to remember which command does what — type `/cs-ceo "your goal"
 |--------|--------|--------------|------|
 | 🧭 **CEO** | `cs-ceo` | `/cs-ceo "goal"` | Estimates effort, picks teammates, dispatches them. **Start here if unsure.** |
 | 💬 **PM** | `cs-clarify` | `/cs-clarify` | Asks Socratic questions, surfaces hidden assumptions, prevents over-engineering |
-| 🏗️ **Architect** | `CS-plan` | `/CS-plan "feature"` | TDD + Clean Architecture plan: domain analysis, architecture, test strategy, checklist |
+| 🏗️ **Architect** | `MJ-plan` | `/MJ-plan "feature"` | TDD + Clean Architecture plan: domain analysis, architecture, test strategy, checklist |
 | 🎨 **Designer** | `cs-design` | `/cs-design <url>` | 5-agent design review: hierarchy, interaction, design system, a11y, anti-patterns |
 | 🎨 **Design Reference** | `cs-design-sample1` | `/cs-design-sample1` | Crextio-style design guide for Tailwind/Next.js dashboards |
-| 🧪 **QA Engineer** | `CS-test` | `/CS-test <url>` | 14-agent web test: security, SEO, perf, a11y, DB, PWA, touch, image |
-| 🔍 **Code Reviewer** | `CS-codebase-review` | `/CS-codebase-review ./src` | 5-agent review: architecture, quality, security, perf, maintainability |
+| 🧪 **QA Engineer** | `MJ-test` | `/MJ-test <url>` | 14-agent web test: security, SEO, perf, a11y, DB, PWA, touch, image |
+| 🔍 **Code Reviewer** | `MJ-codebase-review` | `/MJ-codebase-review ./src` | 5-agent review: architecture, quality, security, perf, maintainability |
 | 🚢 **DevOps** | `cs-ship` | `/cs-ship` | Pre-PR validation: spec compliance, coverage, commit messages |
 | ⚡ **Team Lead** | `cs-smart-run` | `/cs-smart-run "task"` | Plan with Opus → execute with Sonnet agents in parallel |
 | 📚 **Knowledge Keeper** | `cs-experiencing` | `/cs-experiencing` | Versioned learnings + `/cs-end` session-wrap *(author-only push)* |
@@ -78,11 +78,11 @@ Pick à la carte, or install everything:
 ```
 /plugin install cs-ceo@MJnCompany_2-0
 /plugin install cs-clarify@MJnCompany_2-0
-/plugin install CS-plan@MJnCompany_2-0
+/plugin install MJ-plan@MJnCompany_2-0
 /plugin install cs-design@MJnCompany_2-0
 /plugin install cs-design-sample1@MJnCompany_2-0
-/plugin install CS-test@MJnCompany_2-0
-/plugin install CS-codebase-review@MJnCompany_2-0
+/plugin install MJ-test@MJnCompany_2-0
+/plugin install MJ-codebase-review@MJnCompany_2-0
 /plugin install cs-ship@MJnCompany_2-0
 /plugin install cs-smart-run@MJnCompany_2-0
 /plugin install cs-experiencing@MJnCompany_2-0
@@ -114,13 +114,13 @@ The CEO estimates effort, decides which teammates to call (PM, Architect, Design
 ```
 /cs-clarify "add Stripe payments"     # PM: surface assumptions
    ↓
-/CS-plan "Stripe checkout + webhook"  # Architect: TDD plan
+/MJ-plan "Stripe checkout + webhook"  # Architect: TDD plan
    ↓
 … you implement code …
    ↓
-/CS-test https://staging.example.com  # QA: 14-agent web test
+/MJ-test https://staging.example.com  # QA: 14-agent web test
    ↓
-/CS-codebase-review ./src             # Reviewer: 5-agent code review
+/MJ-codebase-review ./src             # Reviewer: 5-agent code review
    ↓
 /cs-ship                              # DevOps: pre-PR gate
 ```
@@ -129,7 +129,7 @@ The CEO estimates effort, decides which teammates to call (PM, Architect, Design
 
 ```
 /cs-design https://example.com    # Visual + UX review
-/CS-test https://example.com      # Security/SEO/perf/a11y
+/MJ-test https://example.com      # Security/SEO/perf/a11y
 ```
 
 ### Just let the CEO drive
@@ -174,9 +174,9 @@ plugins/shared/
 
 | Plugin | Agents | Mode |
 |--------|--------|------|
-| CS-test | 14 | Phase 1 sequential (build, page-explore) → Phase 2 parallel (12 specialists) |
-| CS-plan | 4 | Parallel: domain, architecture, TDD, checklist |
-| CS-codebase-review | 5 | Parallel: architecture, quality, security, perf, maintainability |
+| MJ-test | 14 | Phase 1 sequential (build, page-explore) → Phase 2 parallel (12 specialists) |
+| MJ-plan | 4 | Parallel: domain, architecture, TDD, checklist |
+| MJ-codebase-review | 5 | Parallel: architecture, quality, security, perf, maintainability |
 | cs-design | 5 | Parallel: visual, interaction, design-system, responsive/a11y, anti-pattern |
 | cs-clarify | 4 | Sequential Socratic elicitation |
 | cs-ship | 4 | Parallel pre-PR validation |
@@ -199,11 +199,11 @@ MJnCompany_2-0/
 │   │       └── abspath_check.py   #    hardcoded absolute path detection
 │   ├── cs-ceo-v11/                # 🧭 CEO orchestrator
 │   ├── cs-clarify-v1/             # 💬 PM
-│   ├── CS-plan-v21/               # 🏗️ Architect
+│   ├── MJ-plan-v21/               # 🏗️ Architect
 │   ├── cs-design-v19/             # 🎨 Designer
 │   ├── cs-design-sample1/         # 🎨 Design reference
-│   ├── CS-test-v26/               # 🧪 QA
-│   ├── CS-codebase-review-v29/    # 🔍 Reviewer (Python pre-pass enabled)
+│   ├── MJ-test-v26/               # 🧪 QA
+│   ├── MJ-codebase-review-v29/    # 🔍 Reviewer (Python pre-pass enabled)
 │   ├── cs-ship-v1/                # 🚢 DevOps
 │   ├── cs-smart-run/              # ⚡ Team Lead
 │   ├── cs-experiencing-v8/        # 📚 Knowledge keeper

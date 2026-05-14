@@ -12,13 +12,13 @@ allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Agent, AskUserQuestion
 | 커맨드 | 설명 |
 |--------|------|
 | `/cs-experiencing` | 도메인 목록 + 버전 현황 |
-| `/cs-experiencing test [URL]` | CS-test 실행 (14-agent 웹 테스트) |
-| `/cs-experiencing plan [task]` | CS-plan 실행 |
-| `/cs-experiencing review [path] [--focus aspect]` | CS-codebase-review 실행 (5-관점 코드 리뷰) |
+| `/cs-experiencing test [URL]` | MJ-test 실행 (14-agent 웹 테스트) |
+| `/cs-experiencing plan [task]` | MJ-plan 실행 |
+| `/cs-experiencing review [path] [--focus aspect]` | MJ-codebase-review 실행 (5-관점 코드 리뷰) |
 | `/cs-experiencing update` | **4개 스킬 모두 버전업** (= version-up all) |
-| `/cs-experiencing version-up test` | CS-test 버전 증가 → 새 버전 디렉토리 생성 |
-| `/cs-experiencing version-up plan` | CS-plan 버전 증가 |
-| `/cs-experiencing version-up review` | CS-codebase-review 버전 증가 |
+| `/cs-experiencing version-up test` | MJ-test 버전 증가 → 새 버전 디렉토리 생성 |
+| `/cs-experiencing version-up plan` | MJ-plan 버전 증가 |
+| `/cs-experiencing version-up review` | MJ-codebase-review 버전 증가 |
 | `/cs-experiencing version-up design` | cs-design 버전 증가 |
 | `/cs-experiencing version-up all` | 4개 도메인 한번에 버전 증가 |
 | `/cs-experiencing status` | 모든 도메인 버전 현황 |
@@ -29,9 +29,9 @@ allowed-tools: Bash, Read, Write, Edit, Glob, Grep, Agent, AskUserQuestion
 
 | 도메인 | 버전 | 내용 |
 |--------|------|------|
-| CS-test | v3 | playwright 14-agent 웹 테스트 팀 |
-| CS-plan | v3 | TDD+CleanArch 4-agent 플랜 |
-| CS-codebase-review | v3 | 5-관점 병렬 코드 리뷰 (Architecture/Quality/Security/Performance/Maintainability) |
+| MJ-test | v3 | playwright 14-agent 웹 테스트 팀 |
+| MJ-plan | v3 | TDD+CleanArch 4-agent 플랜 |
+| MJ-codebase-review | v3 | 5-관점 병렬 코드 리뷰 (Architecture/Quality/Security/Performance/Maintainability) |
 
 ## 실행 흐름
 

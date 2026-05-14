@@ -34,9 +34,9 @@ Read the user's request and classify:
 ### Step 2: Success Criteria Definition
 
 For each domain, generate a one-sentence success criterion:
-- CS-test: "이 URL에서 [X] 페이지들이 [Y] 기준 이상으로 동작하면 성공"
-- CS-plan: "[기능명]의 TDD 플랜이 [레이어 수]개 레이어 + [테스트 수]개 테스트로 완성되면 성공"
-- CS-codebase-review: "[경로]에서 심각도 P0 이슈가 0개면 성공"
+- MJ-test: "이 URL에서 [X] 페이지들이 [Y] 기준 이상으로 동작하면 성공"
+- MJ-plan: "[기능명]의 TDD 플랜이 [레이어 수]개 레이어 + [테스트 수]개 테스트로 완성되면 성공"
+- MJ-codebase-review: "[경로]에서 심각도 P0 이슈가 0개면 성공"
 - cs-design: "[경로]에서 안티패턴이 [N]개 이하면 성공"
 
 Output these criteria before invoking the domain workflow.
@@ -55,7 +55,7 @@ Apply the "simplicity first" test:
 ──────────────────
 목표: [user intent, one sentence]
 성공 기준: [success criterion]
-권장 실행: [recommended command, e.g., /CS-test --focus functional]
+권장 실행: [recommended command, e.g., /MJ-test --focus functional]
 예상 소요: [S/M/L: small=<2min, medium=2-5min, large=5min+]
 ──────────────────
 진행하시겠습니까? [Y 자동 진행 / 범위 조정]

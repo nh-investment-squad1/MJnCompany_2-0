@@ -5,9 +5,9 @@ tool as your FIRST action. Do NOT answer directly, do NOT use other tools first.
 The skill has specialized workflows that produce better results than ad-hoc answers.
 
 Key routing rules:
-- Web testing, playwright, site QA, find bugs on a URL → invoke CS-test
-- TDD plan, clean architecture plan, coding plan for a feature → invoke CS-plan
-- Codebase review, architecture review, code quality check → invoke CS-codebase-review
+- Web testing, playwright, site QA, find bugs on a URL → invoke MJ-test
+- TDD plan, clean architecture plan, coding plan for a feature → invoke MJ-plan
+- Codebase review, architecture review, code quality check → invoke MJ-codebase-review
 - Design review, UI audit, UX analysis, 디자인 리뷰, anti-pattern detection → invoke cs-design
 - Sync plugins, push to GitHub, update marketplace → invoke cs-sync
 - Complex multi-step task, plan then execute in parallel → invoke smart-run
